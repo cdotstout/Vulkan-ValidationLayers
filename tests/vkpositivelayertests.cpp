@@ -7721,3 +7721,19 @@ TEST_F(VkPositiveLayerTest, TransferImageToSwapchainDeviceGroup) {
     vkDestroyImage(m_device->device(), peer_image, NULL);
     DestroySwapchain();
 }
+
+TEST_F(VkPositiveLayerTest, TestRasterizationDiscardEnableTrue) {
+    TEST_DESCRIPTION("Ensure it doesn't crash in fragment shader when rasterizerDiscardEnable = true");
+    ASSERT_NO_FATAL_FAILURE(Init());
+    ASSERT_NO_FATAL_FAILURE(InitRenderTarget());
+
+    CreatePipelineHelper pipe(*this);
+    pipe.InitInfo();
+    pipe.gp_ci_.pViewportState = nullptr;
+    pipe.gp_ci_.pMultisampleState = nullptr;
+    pipe.gp_ci_.pDepthStencilState = nullptr;
+    pipe.gp_ci_.pColorBlendState = nullptr;
+    pipe.rs_state_ci_.rasterizerDiscardEnable = VK_TRUE;
+    pipe.InitState();
+    pipe.CreateGraphicsPipeline();
+}
