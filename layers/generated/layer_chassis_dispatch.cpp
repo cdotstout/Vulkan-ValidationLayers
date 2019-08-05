@@ -2171,9 +2171,14 @@ VkResult DispatchCreateGraphicsPipelines(VkDevice device, VkPipelineCache pipeli
         std::lock_guard<std::mutex> lock(dispatch_lock);
         pipelineCache = layer_data->Unwrap(pipelineCache);
     }
-
+#ifdef VK_USE_PLATFORM_ANDROID_KHR
+    __android_log_print(ANDROID_LOG_INFO, "VulkanLayerValidationTests", "%s", "DispatchCreateGraphicsPipelines aaa");
+#endif  // VK_USE_PLATFORM_ANDROID_KHR
     VkResult result = layer_data->device_dispatch_table.CreateGraphicsPipelines(device, pipelineCache, createInfoCount,
                                                                                 local_pCreateInfos->ptr(), pAllocator, pPipelines);
+#ifdef VK_USE_PLATFORM_ANDROID_KHR
+    __android_log_print(ANDROID_LOG_INFO, "VulkanLayerValidationTests", "%s", "DispatchCreateGraphicsPipelines bbb");
+#endif  // VK_USE_PLATFORM_ANDROID_KHR
     delete[] local_pCreateInfos;
     {
         std::lock_guard<std::mutex> lock(dispatch_lock);
