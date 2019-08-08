@@ -239,6 +239,8 @@ source_set("vulkan_layer_utils") {
     "layers/vk_layer_extension_utils.h",
     "layers/vk_layer_utils.cpp",
     "layers/vk_layer_utils.h",
+    "layers/vk_layer_utils_minimal.cpp",
+    "layers/vk_layer_utils_minimal.h",
   ]
   public_configs = [
     "$vulkan_headers_dir:vulkan_headers_config",
@@ -333,15 +335,36 @@ group("vulkan_validation_layers") {
   }
 }
 
-# TODO(MA-562): minimize this.
-# This source_set doesn't include the validation layer strings by default, though including some
-# files (e.g. vk_layer_logging.h or vk_layer_utils.h) might still bring them in to a target.
+# TODO: make a template to reuse the non-sources
 source_set("micro_layer_common") {
+  # For layers defined outside this repo
   public_configs = [ ":vulkan_layer_config" ]
 
-  public_deps = [
-    ":vulkan_layer_utils",
+  sources = [
+    "$vulkan_headers_dir/include/vulkan/vk_layer.h",
+    "$vulkan_headers_dir/include/vulkan/vk_sdk_platform.h",
+    "$vulkan_headers_dir/include/vulkan/vulkan.h",
+    "layers/vk_format_utils.cpp",
+    "layers/vk_format_utils.h",
+    "layers/vk_layer_extension_utils.cpp",
+    "layers/vk_layer_extension_utils.h",
+    "layers/vk_layer_utils_minimal.cpp",
+    "layers/vk_layer_utils_minimal.h",
   ]
+  public_configs += [
+    "$vulkan_headers_dir:vulkan_headers_config",
+    ":vulkan_internal_config",
+  ]
+  public_deps = []
+  configs -= vulkan_undefine_configs
+  if (is_fuchsia) {
+    public_deps = [
+      "//third_party/Vulkan-Loader:dlopen_fuchsia",
+    ]
+  } else {
+    configs -= [ "//build/config/compiler:chromium_code" ]
+    configs += [ "//build/config/compiler:no_chromium_code" ]
+  }
 }
 
 group("tests") {
