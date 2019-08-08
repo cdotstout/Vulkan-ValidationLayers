@@ -28,10 +28,14 @@
 #include <WinSock2.h>
 #endif  // _WIN32
 
+#if defined(__Fuchsia__)
+#include "dlopen_fuchsia.h"
+#endif  // defined(__Fuchsia__)
+
 #include "vulkan/vk_platform.h"
 #include "vulkan/vk_sdk_platform.h"
 
-#if defined(__linux__) || defined(__APPLE__)
+#if defined(__linux__) || defined(__APPLE__) || defined(__Fuchsia__)
 /* Linux-specific common code: */
 
 // Headers:
@@ -99,14 +103,27 @@ static inline char *loader_platform_dirname(char *path) { return dirname(path); 
 
 // Dynamic Loading of libraries:
 typedef void *loader_platform_dl_handle;
-static inline loader_platform_dl_handle loader_platform_open_library(const char *libPath) {
+static inline loader_platform_dl_handle loader_platform_open_library_or_driver(const char *libPath, bool driver) {
+#ifdef __Fuchsia__
+    return dlopen_fuchsia(libPath, RTLD_LAZY | RTLD_LOCAL, driver);
+#else
     // When loading the library, we use RTLD_LAZY so that not all symbols have to be
     // resolved at this time (which improves performance). Note that if not all symbols
     // can be resolved, this could cause crashes later. Use the LD_BIND_NOW environment
     // variable to force all symbols to be resolved here.
     return dlopen(libPath, RTLD_LAZY | RTLD_LOCAL);
+#endif
 }
-static inline const char *loader_platform_open_library_error(const char *libPath) { return dlerror(); }
+static inline loader_platform_dl_handle loader_platform_open_library(const char *libPath) {
+    return loader_platform_open_library_or_driver(libPath, false);
+}
+static inline const char *loader_platform_open_library_error(const char *libPath) {
+#ifdef __Fuchsia__
+    return dlerror_fuchsia();
+#else
+    return dlerror();
+#endif
+}
 static inline void loader_platform_close_library(loader_platform_dl_handle library) { dlclose(library); }
 static inline void *loader_platform_get_proc_address(loader_platform_dl_handle library, const char *name) {
     assert(library);

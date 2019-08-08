@@ -17,7 +17,7 @@ import("//build_overrides/vulkan_validation_layers.gni")
 
 # Fuchsia has non-upstream changes to the vulkan layers, so we don't want
 # to build it from upstream sources.
-assert(!is_fuchsia)
+#assert(!is_fuchsia)
 
 vulkan_undefine_configs = []
 if (is_win) {
@@ -51,6 +51,15 @@ action("vulkan_clean_old_validation_layer_objects") {
     "$raw_root_out_dir/libVkLayer*",
     "$raw_root_out_dir/VkLayer*",
     "$raw_vulkan_data_dir/VkLayer*.json",
+  ]
+}
+
+config("generated_layers_config") {
+  cflags = [
+    "-Wno-newline-eof",
+    "-Wno-missing-field-initializers",
+    "-Wno-unused-const-variable",
+    "-Wno-sign-compare",
   ]
 }
 
@@ -140,7 +149,8 @@ layers = [
   ],
   [
     "object_lifetimes",
-    object_lifetimes_sources + chassis_sources + thread_safety_sources + core_validation_sources,
+    object_lifetimes_sources + chassis_sources + thread_safety_sources +
+        core_validation_sources,
     [ ":vulkan_core_validation_glslang" ],
     [ "BUILD_OBJECT_TRACKER" ],
   ],
@@ -195,8 +205,8 @@ if (!is_android) {
       "VkLayer_khronos_validation.json",
     ]
     sources = [
-      "$vulkan_headers_dir/include/vulkan/vulkan_core.h",
       "$vulkan_headers_dir/include/vulkan/vk_layer.h",
+      "$vulkan_headers_dir/include/vulkan/vulkan_core.h",
     ]
     outputs = []
     foreach(json_name, json_names) {
@@ -219,6 +229,9 @@ source_set("vulkan_layer_utils") {
     "layers/generated",
   ]
   sources = [
+    "$vulkan_headers_dir/include/vulkan/vk_layer.h",
+    "$vulkan_headers_dir/include/vulkan/vk_sdk_platform.h",
+    "$vulkan_headers_dir/include/vulkan/vulkan.h",
     "layers/vk_format_utils.cpp",
     "layers/vk_format_utils.h",
     "layers/vk_layer_config.cpp",
@@ -227,18 +240,21 @@ source_set("vulkan_layer_utils") {
     "layers/vk_layer_extension_utils.h",
     "layers/vk_layer_utils.cpp",
     "layers/vk_layer_utils.h",
-    "$vulkan_headers_dir/include/vulkan/vk_layer.h",
-    "$vulkan_headers_dir/include/vulkan/vulkan.h",
-    "$vulkan_headers_dir/include/vulkan/vk_sdk_platform.h",
   ]
   public_configs = [
     "$vulkan_headers_dir:vulkan_headers_config",
     ":vulkan_internal_config",
   ]
-  configs -= [ "//build/config/compiler:chromium_code" ]
-  configs += [ "//build/config/compiler:no_chromium_code" ]
   public_deps = []
   configs -= vulkan_undefine_configs
+  if (is_fuchsia) {
+    public_deps = [
+      "//third_party/Vulkan-Loader:dlopen_fuchsia",
+    ]
+  } else {
+    configs -= [ "//build/config/compiler:chromium_code" ]
+    configs += [ "//build/config/compiler:no_chromium_code" ]
+  }
 }
 
 config("vulkan_core_validation_config") {
@@ -263,12 +279,23 @@ config("vulkan_stateless_validation_config") {
   }
 }
 
+if (is_fuchsia) {
+  library_type = "loadable_module"
+} else {
+  library_type = "shared_library"
+}
+
 foreach(layer_info, layers) {
   name = layer_info[0]
-  shared_library("VkLayer_$name") {
-    configs -= [ "//build/config/compiler:chromium_code" ]
-    configs += [ "//build/config/compiler:no_chromium_code" ]
+  target(library_type, "VkLayer_$name") {
+    if (is_fuchsia) {
+      configs -= [ "//build/config/fuchsia:thread_safety_annotations" ]
+    } else {
+      configs -= [ "//build/config/compiler:chromium_code" ]
+      configs += [ "//build/config/compiler:no_chromium_code" ]
+    }
     configs -= vulkan_undefine_configs
+    configs += [ ":generated_layers_config" ]
     public_configs = [ ":vulkan_layer_config" ]
     deps = [
       ":vulkan_layer_utils",
@@ -295,9 +322,29 @@ foreach(layer_info, layers) {
 }
 
 group("vulkan_validation_layers") {
+  public_deps = []
   data_deps = []
   foreach(layer_info, layers) {
     name = layer_info[0]
-    data_deps += [ ":VkLayer_$name" ]
+    if (is_fuchsia) {
+      public_deps += [ ":VkLayer_$name" ]
+    } else {
+      data_deps += [ ":VkLayer_$name" ]
+    }
   }
+}
+
+# TODO(MA-562): minimize this.
+# This source_set doesn't include the validation layer strings by default, though including some
+# files (e.g. vk_layer_logging.h or vk_layer_utils.h) might still bring them in to a target.
+source_set("micro_layer_common") {
+  public_configs = [ ":vulkan_layer_config" ]
+
+  public_deps = [
+    ":vulkan_layer_utils",
+  ]
+}
+
+group("tests") {
+  # TODO(MA-684)
 }

@@ -1,0 +1,107 @@
+# Copyright 2018 The Fuchsia Authors
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice (including the next
+# paragraph) shall be included in all copies or substantial portions of the
+# Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+# This scope makes it easy to incorporate the Vulkan validation layers into a
+# package. To use it, import this gni file and add the entries of the
+# 'vulkan_validation_layers' scope to the package's 'loadable_modules',
+# 'resources', and 'public_deps' parameters.
+#
+# Example BUILD.gn file:
+#
+# import("//src/graphics/lib/vulkan/layers.gni")
+#
+# package("my_funky_vulkan_using_program") {
+#   loadable_modules = [
+#     ...
+#     ] + vulkan_validation_layers.loadable_modules
+#
+#   resources = [
+#     ...
+#     ] + vulkan_validation_layers.resources
+#
+#   public_deps = [
+#     ...
+#     ] + vulkan_validation_layers.public_deps
+# }
+#
+# This will end up placing the validation libraries within the package's "lib/"
+# directory, where they can be loaded like normal libraries, and place the layer
+# configuration data in the package's "data/vulkan/explicit_layer.d" directory which
+# is mapped to "/config/vulkan/explicit_layer.d"
+
+import("//build_overrides/vulkan_validation_layers.gni")
+
+vulkan_data_dir = "$root_out_dir/$vulkan_data_subdir"
+raw_vulkan_data_dir = rebase_path(vulkan_data_dir, root_build_dir)
+
+vulkan_validation_layers = {
+  loadable_modules = [
+    {
+      name = "VkLayer_core_validation.so"
+    },
+    {
+      name = "VkLayer_object_lifetimes.so"
+    },
+    {
+      name = "VkLayer_thread_safety.so"
+    },
+    {
+      name = "VkLayer_stateless_validation.so"
+    },
+    {
+      name = "VkLayer_unique_objects.so"
+    },
+    {
+      name = "VkLayer_khronos_validation.so"
+    },
+  ]
+
+  resources = [
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_core_validation.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_core_validation.json"
+    },
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_object_lifetimes.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_object_lifetimes.json"
+    },
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_thread_safety.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_thread_safety.json"
+    },
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_stateless_validation.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_stateless_validation.json"
+    },
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_unique_objects.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_unique_objects.json"
+    },
+    {
+      path = rebase_path("$vulkan_data_dir/VkLayer_khronos_validation.json")
+      dest = "vulkan/explicit_layer.d/VkLayer_khronos_validation.json"
+    },
+  ]
+
+  public_deps = [
+    "//src/graphics/lib/vulkan:validation_layers",
+  ]
+}
