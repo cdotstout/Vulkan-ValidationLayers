@@ -25506,3 +25506,698 @@ void safe_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT::initialize(const sa
     uniformTexelBufferOffsetAlignmentBytes = src->uniformTexelBufferOffsetAlignmentBytes;
     uniformTexelBufferOffsetSingleTexelAlignment = src->uniformTexelBufferOffsetSingleTexelAlignment;
 }
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkBufferCollectionCreateInfoFUCHSIA::safe_VkBufferCollectionCreateInfoFUCHSIA(const VkBufferCollectionCreateInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    collectionToken(in_struct->collectionToken)
+{
+}
+
+safe_VkBufferCollectionCreateInfoFUCHSIA::safe_VkBufferCollectionCreateInfoFUCHSIA()
+{}
+
+safe_VkBufferCollectionCreateInfoFUCHSIA::safe_VkBufferCollectionCreateInfoFUCHSIA(const safe_VkBufferCollectionCreateInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    collectionToken = src.collectionToken;
+}
+
+safe_VkBufferCollectionCreateInfoFUCHSIA& safe_VkBufferCollectionCreateInfoFUCHSIA::operator=(const safe_VkBufferCollectionCreateInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    collectionToken = src.collectionToken;
+
+    return *this;
+}
+
+safe_VkBufferCollectionCreateInfoFUCHSIA::~safe_VkBufferCollectionCreateInfoFUCHSIA()
+{
+}
+
+void safe_VkBufferCollectionCreateInfoFUCHSIA::initialize(const VkBufferCollectionCreateInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    collectionToken = in_struct->collectionToken;
+}
+
+void safe_VkBufferCollectionCreateInfoFUCHSIA::initialize(const safe_VkBufferCollectionCreateInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    collectionToken = src->collectionToken;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkFuchsiaImageFormatFUCHSIA::safe_VkFuchsiaImageFormatFUCHSIA(const VkFuchsiaImageFormatFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    imageFormat(in_struct->imageFormat),
+    imageFormatSize(in_struct->imageFormatSize)
+{
+}
+
+safe_VkFuchsiaImageFormatFUCHSIA::safe_VkFuchsiaImageFormatFUCHSIA()
+{}
+
+safe_VkFuchsiaImageFormatFUCHSIA::safe_VkFuchsiaImageFormatFUCHSIA(const safe_VkFuchsiaImageFormatFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    imageFormat = src.imageFormat;
+    imageFormatSize = src.imageFormatSize;
+}
+
+safe_VkFuchsiaImageFormatFUCHSIA& safe_VkFuchsiaImageFormatFUCHSIA::operator=(const safe_VkFuchsiaImageFormatFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    imageFormat = src.imageFormat;
+    imageFormatSize = src.imageFormatSize;
+
+    return *this;
+}
+
+safe_VkFuchsiaImageFormatFUCHSIA::~safe_VkFuchsiaImageFormatFUCHSIA()
+{
+}
+
+void safe_VkFuchsiaImageFormatFUCHSIA::initialize(const VkFuchsiaImageFormatFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    imageFormat = in_struct->imageFormat;
+    imageFormatSize = in_struct->imageFormatSize;
+}
+
+void safe_VkFuchsiaImageFormatFUCHSIA::initialize(const safe_VkFuchsiaImageFormatFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    imageFormat = src->imageFormat;
+    imageFormatSize = src->imageFormatSize;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkImportMemoryBufferCollectionFUCHSIA::safe_VkImportMemoryBufferCollectionFUCHSIA(const VkImportMemoryBufferCollectionFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    collection(in_struct->collection),
+    index(in_struct->index)
+{
+}
+
+safe_VkImportMemoryBufferCollectionFUCHSIA::safe_VkImportMemoryBufferCollectionFUCHSIA()
+{}
+
+safe_VkImportMemoryBufferCollectionFUCHSIA::safe_VkImportMemoryBufferCollectionFUCHSIA(const safe_VkImportMemoryBufferCollectionFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+}
+
+safe_VkImportMemoryBufferCollectionFUCHSIA& safe_VkImportMemoryBufferCollectionFUCHSIA::operator=(const safe_VkImportMemoryBufferCollectionFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+
+    return *this;
+}
+
+safe_VkImportMemoryBufferCollectionFUCHSIA::~safe_VkImportMemoryBufferCollectionFUCHSIA()
+{
+}
+
+void safe_VkImportMemoryBufferCollectionFUCHSIA::initialize(const VkImportMemoryBufferCollectionFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    collection = in_struct->collection;
+    index = in_struct->index;
+}
+
+void safe_VkImportMemoryBufferCollectionFUCHSIA::initialize(const safe_VkImportMemoryBufferCollectionFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    collection = src->collection;
+    index = src->index;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkBufferCollectionImageCreateInfoFUCHSIA::safe_VkBufferCollectionImageCreateInfoFUCHSIA(const VkBufferCollectionImageCreateInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    collection(in_struct->collection),
+    index(in_struct->index)
+{
+}
+
+safe_VkBufferCollectionImageCreateInfoFUCHSIA::safe_VkBufferCollectionImageCreateInfoFUCHSIA()
+{}
+
+safe_VkBufferCollectionImageCreateInfoFUCHSIA::safe_VkBufferCollectionImageCreateInfoFUCHSIA(const safe_VkBufferCollectionImageCreateInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+}
+
+safe_VkBufferCollectionImageCreateInfoFUCHSIA& safe_VkBufferCollectionImageCreateInfoFUCHSIA::operator=(const safe_VkBufferCollectionImageCreateInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+
+    return *this;
+}
+
+safe_VkBufferCollectionImageCreateInfoFUCHSIA::~safe_VkBufferCollectionImageCreateInfoFUCHSIA()
+{
+}
+
+void safe_VkBufferCollectionImageCreateInfoFUCHSIA::initialize(const VkBufferCollectionImageCreateInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    collection = in_struct->collection;
+    index = in_struct->index;
+}
+
+void safe_VkBufferCollectionImageCreateInfoFUCHSIA::initialize(const safe_VkBufferCollectionImageCreateInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    collection = src->collection;
+    index = src->index;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkBufferConstraintsInfoFUCHSIA::safe_VkBufferConstraintsInfoFUCHSIA(const VkBufferConstraintsInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    requiredFormatFeatures(in_struct->requiredFormatFeatures),
+    minCount(in_struct->minCount)
+{
+    if (in_struct->pBufferCreateInfo)
+        pBufferCreateInfo = new safe_VkBufferCreateInfo(in_struct->pBufferCreateInfo);
+    else
+        pBufferCreateInfo = NULL;
+}
+
+safe_VkBufferConstraintsInfoFUCHSIA::safe_VkBufferConstraintsInfoFUCHSIA()
+{}
+
+safe_VkBufferConstraintsInfoFUCHSIA::safe_VkBufferConstraintsInfoFUCHSIA(const safe_VkBufferConstraintsInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    requiredFormatFeatures = src.requiredFormatFeatures;
+    minCount = src.minCount;
+    if (src.pBufferCreateInfo)
+        pBufferCreateInfo = new safe_VkBufferCreateInfo(*src.pBufferCreateInfo);
+    else
+        pBufferCreateInfo = NULL;
+}
+
+safe_VkBufferConstraintsInfoFUCHSIA& safe_VkBufferConstraintsInfoFUCHSIA::operator=(const safe_VkBufferConstraintsInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+    if (pBufferCreateInfo)
+        delete pBufferCreateInfo;
+
+    sType = src.sType;
+    pNext = src.pNext;
+    requiredFormatFeatures = src.requiredFormatFeatures;
+    minCount = src.minCount;
+    if (src.pBufferCreateInfo)
+        pBufferCreateInfo = new safe_VkBufferCreateInfo(*src.pBufferCreateInfo);
+    else
+        pBufferCreateInfo = NULL;
+
+    return *this;
+}
+
+safe_VkBufferConstraintsInfoFUCHSIA::~safe_VkBufferConstraintsInfoFUCHSIA()
+{
+    if (pBufferCreateInfo)
+        delete pBufferCreateInfo;
+}
+
+void safe_VkBufferConstraintsInfoFUCHSIA::initialize(const VkBufferConstraintsInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    requiredFormatFeatures = in_struct->requiredFormatFeatures;
+    minCount = in_struct->minCount;
+    if (in_struct->pBufferCreateInfo)
+        pBufferCreateInfo = new safe_VkBufferCreateInfo(in_struct->pBufferCreateInfo);
+    else
+        pBufferCreateInfo = NULL;
+}
+
+void safe_VkBufferConstraintsInfoFUCHSIA::initialize(const safe_VkBufferConstraintsInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    requiredFormatFeatures = src->requiredFormatFeatures;
+    minCount = src->minCount;
+    if (src->pBufferCreateInfo)
+        pBufferCreateInfo = new safe_VkBufferCreateInfo(*src->pBufferCreateInfo);
+    else
+        pBufferCreateInfo = NULL;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkBufferCollectionBufferCreateInfoFUCHSIA::safe_VkBufferCollectionBufferCreateInfoFUCHSIA(const VkBufferCollectionBufferCreateInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    collection(in_struct->collection),
+    index(in_struct->index)
+{
+}
+
+safe_VkBufferCollectionBufferCreateInfoFUCHSIA::safe_VkBufferCollectionBufferCreateInfoFUCHSIA()
+{}
+
+safe_VkBufferCollectionBufferCreateInfoFUCHSIA::safe_VkBufferCollectionBufferCreateInfoFUCHSIA(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+}
+
+safe_VkBufferCollectionBufferCreateInfoFUCHSIA& safe_VkBufferCollectionBufferCreateInfoFUCHSIA::operator=(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    collection = src.collection;
+    index = src.index;
+
+    return *this;
+}
+
+safe_VkBufferCollectionBufferCreateInfoFUCHSIA::~safe_VkBufferCollectionBufferCreateInfoFUCHSIA()
+{
+}
+
+void safe_VkBufferCollectionBufferCreateInfoFUCHSIA::initialize(const VkBufferCollectionBufferCreateInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    collection = in_struct->collection;
+    index = in_struct->index;
+}
+
+void safe_VkBufferCollectionBufferCreateInfoFUCHSIA::initialize(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    collection = src->collection;
+    index = src->index;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkBufferCollectionPropertiesFUCHSIA::safe_VkBufferCollectionPropertiesFUCHSIA(const VkBufferCollectionPropertiesFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    memoryTypeBits(in_struct->memoryTypeBits),
+    count(in_struct->count)
+{
+}
+
+safe_VkBufferCollectionPropertiesFUCHSIA::safe_VkBufferCollectionPropertiesFUCHSIA()
+{}
+
+safe_VkBufferCollectionPropertiesFUCHSIA::safe_VkBufferCollectionPropertiesFUCHSIA(const safe_VkBufferCollectionPropertiesFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    memoryTypeBits = src.memoryTypeBits;
+    count = src.count;
+}
+
+safe_VkBufferCollectionPropertiesFUCHSIA& safe_VkBufferCollectionPropertiesFUCHSIA::operator=(const safe_VkBufferCollectionPropertiesFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    memoryTypeBits = src.memoryTypeBits;
+    count = src.count;
+
+    return *this;
+}
+
+safe_VkBufferCollectionPropertiesFUCHSIA::~safe_VkBufferCollectionPropertiesFUCHSIA()
+{
+}
+
+void safe_VkBufferCollectionPropertiesFUCHSIA::initialize(const VkBufferCollectionPropertiesFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    memoryTypeBits = in_struct->memoryTypeBits;
+    count = in_struct->count;
+}
+
+void safe_VkBufferCollectionPropertiesFUCHSIA::initialize(const safe_VkBufferCollectionPropertiesFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    memoryTypeBits = src->memoryTypeBits;
+    count = src->count;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkImportMemoryZirconHandleInfoFUCHSIA::safe_VkImportMemoryZirconHandleInfoFUCHSIA(const VkImportMemoryZirconHandleInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    handleType(in_struct->handleType),
+    handle(in_struct->handle)
+{
+}
+
+safe_VkImportMemoryZirconHandleInfoFUCHSIA::safe_VkImportMemoryZirconHandleInfoFUCHSIA()
+{}
+
+safe_VkImportMemoryZirconHandleInfoFUCHSIA::safe_VkImportMemoryZirconHandleInfoFUCHSIA(const safe_VkImportMemoryZirconHandleInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    handleType = src.handleType;
+    handle = src.handle;
+}
+
+safe_VkImportMemoryZirconHandleInfoFUCHSIA& safe_VkImportMemoryZirconHandleInfoFUCHSIA::operator=(const safe_VkImportMemoryZirconHandleInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    handleType = src.handleType;
+    handle = src.handle;
+
+    return *this;
+}
+
+safe_VkImportMemoryZirconHandleInfoFUCHSIA::~safe_VkImportMemoryZirconHandleInfoFUCHSIA()
+{
+}
+
+void safe_VkImportMemoryZirconHandleInfoFUCHSIA::initialize(const VkImportMemoryZirconHandleInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    handleType = in_struct->handleType;
+    handle = in_struct->handle;
+}
+
+void safe_VkImportMemoryZirconHandleInfoFUCHSIA::initialize(const safe_VkImportMemoryZirconHandleInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    handleType = src->handleType;
+    handle = src->handle;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkMemoryZirconHandlePropertiesFUCHSIA::safe_VkMemoryZirconHandlePropertiesFUCHSIA(const VkMemoryZirconHandlePropertiesFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    memoryTypeBits(in_struct->memoryTypeBits)
+{
+}
+
+safe_VkMemoryZirconHandlePropertiesFUCHSIA::safe_VkMemoryZirconHandlePropertiesFUCHSIA()
+{}
+
+safe_VkMemoryZirconHandlePropertiesFUCHSIA::safe_VkMemoryZirconHandlePropertiesFUCHSIA(const safe_VkMemoryZirconHandlePropertiesFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    memoryTypeBits = src.memoryTypeBits;
+}
+
+safe_VkMemoryZirconHandlePropertiesFUCHSIA& safe_VkMemoryZirconHandlePropertiesFUCHSIA::operator=(const safe_VkMemoryZirconHandlePropertiesFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    memoryTypeBits = src.memoryTypeBits;
+
+    return *this;
+}
+
+safe_VkMemoryZirconHandlePropertiesFUCHSIA::~safe_VkMemoryZirconHandlePropertiesFUCHSIA()
+{
+}
+
+void safe_VkMemoryZirconHandlePropertiesFUCHSIA::initialize(const VkMemoryZirconHandlePropertiesFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    memoryTypeBits = in_struct->memoryTypeBits;
+}
+
+void safe_VkMemoryZirconHandlePropertiesFUCHSIA::initialize(const safe_VkMemoryZirconHandlePropertiesFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    memoryTypeBits = src->memoryTypeBits;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkMemoryGetZirconHandleInfoFUCHSIA::safe_VkMemoryGetZirconHandleInfoFUCHSIA(const VkMemoryGetZirconHandleInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    memory(in_struct->memory),
+    handleType(in_struct->handleType)
+{
+}
+
+safe_VkMemoryGetZirconHandleInfoFUCHSIA::safe_VkMemoryGetZirconHandleInfoFUCHSIA()
+{}
+
+safe_VkMemoryGetZirconHandleInfoFUCHSIA::safe_VkMemoryGetZirconHandleInfoFUCHSIA(const safe_VkMemoryGetZirconHandleInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    memory = src.memory;
+    handleType = src.handleType;
+}
+
+safe_VkMemoryGetZirconHandleInfoFUCHSIA& safe_VkMemoryGetZirconHandleInfoFUCHSIA::operator=(const safe_VkMemoryGetZirconHandleInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    memory = src.memory;
+    handleType = src.handleType;
+
+    return *this;
+}
+
+safe_VkMemoryGetZirconHandleInfoFUCHSIA::~safe_VkMemoryGetZirconHandleInfoFUCHSIA()
+{
+}
+
+void safe_VkMemoryGetZirconHandleInfoFUCHSIA::initialize(const VkMemoryGetZirconHandleInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    memory = in_struct->memory;
+    handleType = in_struct->handleType;
+}
+
+void safe_VkMemoryGetZirconHandleInfoFUCHSIA::initialize(const safe_VkMemoryGetZirconHandleInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    memory = src->memory;
+    handleType = src->handleType;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::safe_VkImportSemaphoreZirconHandleInfoFUCHSIA(const VkImportSemaphoreZirconHandleInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    semaphore(in_struct->semaphore),
+    flags(in_struct->flags),
+    handleType(in_struct->handleType),
+    handle(in_struct->handle)
+{
+}
+
+safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::safe_VkImportSemaphoreZirconHandleInfoFUCHSIA()
+{}
+
+safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::safe_VkImportSemaphoreZirconHandleInfoFUCHSIA(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    semaphore = src.semaphore;
+    flags = src.flags;
+    handleType = src.handleType;
+    handle = src.handle;
+}
+
+safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::operator=(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    semaphore = src.semaphore;
+    flags = src.flags;
+    handleType = src.handleType;
+    handle = src.handle;
+
+    return *this;
+}
+
+safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::~safe_VkImportSemaphoreZirconHandleInfoFUCHSIA()
+{
+}
+
+void safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::initialize(const VkImportSemaphoreZirconHandleInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    semaphore = in_struct->semaphore;
+    flags = in_struct->flags;
+    handleType = in_struct->handleType;
+    handle = in_struct->handle;
+}
+
+void safe_VkImportSemaphoreZirconHandleInfoFUCHSIA::initialize(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    semaphore = src->semaphore;
+    flags = src->flags;
+    handleType = src->handleType;
+    handle = src->handle;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+
+safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::safe_VkSemaphoreGetZirconHandleInfoFUCHSIA(const VkSemaphoreGetZirconHandleInfoFUCHSIA* in_struct) :
+    sType(in_struct->sType),
+    pNext(in_struct->pNext),
+    semaphore(in_struct->semaphore),
+    handleType(in_struct->handleType)
+{
+}
+
+safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::safe_VkSemaphoreGetZirconHandleInfoFUCHSIA()
+{}
+
+safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::safe_VkSemaphoreGetZirconHandleInfoFUCHSIA(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& src)
+{
+    sType = src.sType;
+    pNext = src.pNext;
+    semaphore = src.semaphore;
+    handleType = src.handleType;
+}
+
+safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::operator=(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& src)
+{
+    if (&src == this) return *this;
+
+
+    sType = src.sType;
+    pNext = src.pNext;
+    semaphore = src.semaphore;
+    handleType = src.handleType;
+
+    return *this;
+}
+
+safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::~safe_VkSemaphoreGetZirconHandleInfoFUCHSIA()
+{
+}
+
+void safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::initialize(const VkSemaphoreGetZirconHandleInfoFUCHSIA* in_struct)
+{
+    sType = in_struct->sType;
+    pNext = in_struct->pNext;
+    semaphore = in_struct->semaphore;
+    handleType = in_struct->handleType;
+}
+
+void safe_VkSemaphoreGetZirconHandleInfoFUCHSIA::initialize(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA* src)
+{
+    sType = src->sType;
+    pNext = src->pNext;
+    semaphore = src->semaphore;
+    handleType = src->handleType;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA

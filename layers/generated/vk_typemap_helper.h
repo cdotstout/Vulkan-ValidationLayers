@@ -3288,6 +3288,138 @@ template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_AL
     typedef VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT Type;
 };
 
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkBufferCollectionCreateInfoFUCHSIA to id VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkBufferCollectionCreateInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA> {
+    typedef VkBufferCollectionCreateInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkFuchsiaImageFormatFUCHSIA to id VK_STRUCTURE_TYPE_FUCHSIA_IMAGE_FORMAT_FUCHSIA
+template <> struct LvlTypeMap<VkFuchsiaImageFormatFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_FUCHSIA_IMAGE_FORMAT_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_FUCHSIA_IMAGE_FORMAT_FUCHSIA> {
+    typedef VkFuchsiaImageFormatFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkImportMemoryBufferCollectionFUCHSIA to id VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA
+template <> struct LvlTypeMap<VkImportMemoryBufferCollectionFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA> {
+    typedef VkImportMemoryBufferCollectionFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkBufferCollectionImageCreateInfoFUCHSIA to id VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkBufferCollectionImageCreateInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA> {
+    typedef VkBufferCollectionImageCreateInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkBufferConstraintsInfoFUCHSIA to id VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkBufferConstraintsInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA> {
+    typedef VkBufferConstraintsInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkBufferCollectionBufferCreateInfoFUCHSIA to id VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkBufferCollectionBufferCreateInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA> {
+    typedef VkBufferCollectionBufferCreateInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkBufferCollectionPropertiesFUCHSIA to id VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA
+template <> struct LvlTypeMap<VkBufferCollectionPropertiesFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA> {
+    typedef VkBufferCollectionPropertiesFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkImportMemoryZirconHandleInfoFUCHSIA to id VK_STRUCTURE_TYPE_TEMP_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkImportMemoryZirconHandleInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_TEMP_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_TEMP_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA> {
+    typedef VkImportMemoryZirconHandleInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkMemoryZirconHandlePropertiesFUCHSIA to id VK_STRUCTURE_TYPE_TEMP_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA
+template <> struct LvlTypeMap<VkMemoryZirconHandlePropertiesFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_TEMP_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_TEMP_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA> {
+    typedef VkMemoryZirconHandlePropertiesFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkMemoryGetZirconHandleInfoFUCHSIA to id VK_STRUCTURE_TYPE_TEMP_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkMemoryGetZirconHandleInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_TEMP_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_TEMP_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA> {
+    typedef VkMemoryGetZirconHandleInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkImportSemaphoreZirconHandleInfoFUCHSIA to id VK_STRUCTURE_TYPE_TEMP_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkImportSemaphoreZirconHandleInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_TEMP_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_TEMP_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA> {
+    typedef VkImportSemaphoreZirconHandleInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
+#ifdef VK_USE_PLATFORM_FUCHSIA
+// Map type VkSemaphoreGetZirconHandleInfoFUCHSIA to id VK_STRUCTURE_TYPE_TEMP_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA
+template <> struct LvlTypeMap<VkSemaphoreGetZirconHandleInfoFUCHSIA> {
+    static const VkStructureType kSType = VK_STRUCTURE_TYPE_TEMP_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
+};
+
+template <> struct LvlSTypeMap<VK_STRUCTURE_TYPE_TEMP_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA> {
+    typedef VkSemaphoreGetZirconHandleInfoFUCHSIA Type;
+};
+
+#endif // VK_USE_PLATFORM_FUCHSIA
 // Find an entry of the given type in the pNext chain
 template <typename T> const T *lvl_find_in_chain(const void *next) {
     const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);

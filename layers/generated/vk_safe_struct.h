@@ -6408,3 +6408,220 @@ struct safe_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT {
     VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *ptr() { return reinterpret_cast<VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *>(this); }
     VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT const *ptr() const { return reinterpret_cast<VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT const *>(this); }
 };
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkBufferCollectionCreateInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    zx_handle_t collectionToken;
+    safe_VkBufferCollectionCreateInfoFUCHSIA(const VkBufferCollectionCreateInfoFUCHSIA* in_struct);
+    safe_VkBufferCollectionCreateInfoFUCHSIA(const safe_VkBufferCollectionCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionCreateInfoFUCHSIA& operator=(const safe_VkBufferCollectionCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionCreateInfoFUCHSIA();
+    ~safe_VkBufferCollectionCreateInfoFUCHSIA();
+    void initialize(const VkBufferCollectionCreateInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkBufferCollectionCreateInfoFUCHSIA* src);
+    VkBufferCollectionCreateInfoFUCHSIA *ptr() { return reinterpret_cast<VkBufferCollectionCreateInfoFUCHSIA *>(this); }
+    VkBufferCollectionCreateInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkBufferCollectionCreateInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkFuchsiaImageFormatFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    const void* imageFormat;
+    uint32_t imageFormatSize;
+    safe_VkFuchsiaImageFormatFUCHSIA(const VkFuchsiaImageFormatFUCHSIA* in_struct);
+    safe_VkFuchsiaImageFormatFUCHSIA(const safe_VkFuchsiaImageFormatFUCHSIA& src);
+    safe_VkFuchsiaImageFormatFUCHSIA& operator=(const safe_VkFuchsiaImageFormatFUCHSIA& src);
+    safe_VkFuchsiaImageFormatFUCHSIA();
+    ~safe_VkFuchsiaImageFormatFUCHSIA();
+    void initialize(const VkFuchsiaImageFormatFUCHSIA* in_struct);
+    void initialize(const safe_VkFuchsiaImageFormatFUCHSIA* src);
+    VkFuchsiaImageFormatFUCHSIA *ptr() { return reinterpret_cast<VkFuchsiaImageFormatFUCHSIA *>(this); }
+    VkFuchsiaImageFormatFUCHSIA const *ptr() const { return reinterpret_cast<VkFuchsiaImageFormatFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkImportMemoryBufferCollectionFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkBufferCollectionFUCHSIA collection;
+    uint32_t index;
+    safe_VkImportMemoryBufferCollectionFUCHSIA(const VkImportMemoryBufferCollectionFUCHSIA* in_struct);
+    safe_VkImportMemoryBufferCollectionFUCHSIA(const safe_VkImportMemoryBufferCollectionFUCHSIA& src);
+    safe_VkImportMemoryBufferCollectionFUCHSIA& operator=(const safe_VkImportMemoryBufferCollectionFUCHSIA& src);
+    safe_VkImportMemoryBufferCollectionFUCHSIA();
+    ~safe_VkImportMemoryBufferCollectionFUCHSIA();
+    void initialize(const VkImportMemoryBufferCollectionFUCHSIA* in_struct);
+    void initialize(const safe_VkImportMemoryBufferCollectionFUCHSIA* src);
+    VkImportMemoryBufferCollectionFUCHSIA *ptr() { return reinterpret_cast<VkImportMemoryBufferCollectionFUCHSIA *>(this); }
+    VkImportMemoryBufferCollectionFUCHSIA const *ptr() const { return reinterpret_cast<VkImportMemoryBufferCollectionFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkBufferCollectionImageCreateInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkBufferCollectionFUCHSIA collection;
+    uint32_t index;
+    safe_VkBufferCollectionImageCreateInfoFUCHSIA(const VkBufferCollectionImageCreateInfoFUCHSIA* in_struct);
+    safe_VkBufferCollectionImageCreateInfoFUCHSIA(const safe_VkBufferCollectionImageCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionImageCreateInfoFUCHSIA& operator=(const safe_VkBufferCollectionImageCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionImageCreateInfoFUCHSIA();
+    ~safe_VkBufferCollectionImageCreateInfoFUCHSIA();
+    void initialize(const VkBufferCollectionImageCreateInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkBufferCollectionImageCreateInfoFUCHSIA* src);
+    VkBufferCollectionImageCreateInfoFUCHSIA *ptr() { return reinterpret_cast<VkBufferCollectionImageCreateInfoFUCHSIA *>(this); }
+    VkBufferCollectionImageCreateInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkBufferCollectionImageCreateInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkBufferConstraintsInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    safe_VkBufferCreateInfo* pBufferCreateInfo;
+    VkFormatFeatureFlags requiredFormatFeatures;
+    uint32_t minCount;
+    safe_VkBufferConstraintsInfoFUCHSIA(const VkBufferConstraintsInfoFUCHSIA* in_struct);
+    safe_VkBufferConstraintsInfoFUCHSIA(const safe_VkBufferConstraintsInfoFUCHSIA& src);
+    safe_VkBufferConstraintsInfoFUCHSIA& operator=(const safe_VkBufferConstraintsInfoFUCHSIA& src);
+    safe_VkBufferConstraintsInfoFUCHSIA();
+    ~safe_VkBufferConstraintsInfoFUCHSIA();
+    void initialize(const VkBufferConstraintsInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkBufferConstraintsInfoFUCHSIA* src);
+    VkBufferConstraintsInfoFUCHSIA *ptr() { return reinterpret_cast<VkBufferConstraintsInfoFUCHSIA *>(this); }
+    VkBufferConstraintsInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkBufferConstraintsInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkBufferCollectionBufferCreateInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkBufferCollectionFUCHSIA collection;
+    uint32_t index;
+    safe_VkBufferCollectionBufferCreateInfoFUCHSIA(const VkBufferCollectionBufferCreateInfoFUCHSIA* in_struct);
+    safe_VkBufferCollectionBufferCreateInfoFUCHSIA(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionBufferCreateInfoFUCHSIA& operator=(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA& src);
+    safe_VkBufferCollectionBufferCreateInfoFUCHSIA();
+    ~safe_VkBufferCollectionBufferCreateInfoFUCHSIA();
+    void initialize(const VkBufferCollectionBufferCreateInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkBufferCollectionBufferCreateInfoFUCHSIA* src);
+    VkBufferCollectionBufferCreateInfoFUCHSIA *ptr() { return reinterpret_cast<VkBufferCollectionBufferCreateInfoFUCHSIA *>(this); }
+    VkBufferCollectionBufferCreateInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkBufferCollectionBufferCreateInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkBufferCollectionPropertiesFUCHSIA {
+    VkStructureType sType;
+    void* pNext;
+    uint32_t memoryTypeBits;
+    uint32_t count;
+    safe_VkBufferCollectionPropertiesFUCHSIA(const VkBufferCollectionPropertiesFUCHSIA* in_struct);
+    safe_VkBufferCollectionPropertiesFUCHSIA(const safe_VkBufferCollectionPropertiesFUCHSIA& src);
+    safe_VkBufferCollectionPropertiesFUCHSIA& operator=(const safe_VkBufferCollectionPropertiesFUCHSIA& src);
+    safe_VkBufferCollectionPropertiesFUCHSIA();
+    ~safe_VkBufferCollectionPropertiesFUCHSIA();
+    void initialize(const VkBufferCollectionPropertiesFUCHSIA* in_struct);
+    void initialize(const safe_VkBufferCollectionPropertiesFUCHSIA* src);
+    VkBufferCollectionPropertiesFUCHSIA *ptr() { return reinterpret_cast<VkBufferCollectionPropertiesFUCHSIA *>(this); }
+    VkBufferCollectionPropertiesFUCHSIA const *ptr() const { return reinterpret_cast<VkBufferCollectionPropertiesFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkImportMemoryZirconHandleInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkExternalMemoryHandleTypeFlagBits handleType;
+    zx_handle_t handle;
+    safe_VkImportMemoryZirconHandleInfoFUCHSIA(const VkImportMemoryZirconHandleInfoFUCHSIA* in_struct);
+    safe_VkImportMemoryZirconHandleInfoFUCHSIA(const safe_VkImportMemoryZirconHandleInfoFUCHSIA& src);
+    safe_VkImportMemoryZirconHandleInfoFUCHSIA& operator=(const safe_VkImportMemoryZirconHandleInfoFUCHSIA& src);
+    safe_VkImportMemoryZirconHandleInfoFUCHSIA();
+    ~safe_VkImportMemoryZirconHandleInfoFUCHSIA();
+    void initialize(const VkImportMemoryZirconHandleInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkImportMemoryZirconHandleInfoFUCHSIA* src);
+    VkImportMemoryZirconHandleInfoFUCHSIA *ptr() { return reinterpret_cast<VkImportMemoryZirconHandleInfoFUCHSIA *>(this); }
+    VkImportMemoryZirconHandleInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkImportMemoryZirconHandleInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkMemoryZirconHandlePropertiesFUCHSIA {
+    VkStructureType sType;
+    void* pNext;
+    uint32_t memoryTypeBits;
+    safe_VkMemoryZirconHandlePropertiesFUCHSIA(const VkMemoryZirconHandlePropertiesFUCHSIA* in_struct);
+    safe_VkMemoryZirconHandlePropertiesFUCHSIA(const safe_VkMemoryZirconHandlePropertiesFUCHSIA& src);
+    safe_VkMemoryZirconHandlePropertiesFUCHSIA& operator=(const safe_VkMemoryZirconHandlePropertiesFUCHSIA& src);
+    safe_VkMemoryZirconHandlePropertiesFUCHSIA();
+    ~safe_VkMemoryZirconHandlePropertiesFUCHSIA();
+    void initialize(const VkMemoryZirconHandlePropertiesFUCHSIA* in_struct);
+    void initialize(const safe_VkMemoryZirconHandlePropertiesFUCHSIA* src);
+    VkMemoryZirconHandlePropertiesFUCHSIA *ptr() { return reinterpret_cast<VkMemoryZirconHandlePropertiesFUCHSIA *>(this); }
+    VkMemoryZirconHandlePropertiesFUCHSIA const *ptr() const { return reinterpret_cast<VkMemoryZirconHandlePropertiesFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkMemoryGetZirconHandleInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkDeviceMemory memory;
+    VkExternalMemoryHandleTypeFlagBits handleType;
+    safe_VkMemoryGetZirconHandleInfoFUCHSIA(const VkMemoryGetZirconHandleInfoFUCHSIA* in_struct);
+    safe_VkMemoryGetZirconHandleInfoFUCHSIA(const safe_VkMemoryGetZirconHandleInfoFUCHSIA& src);
+    safe_VkMemoryGetZirconHandleInfoFUCHSIA& operator=(const safe_VkMemoryGetZirconHandleInfoFUCHSIA& src);
+    safe_VkMemoryGetZirconHandleInfoFUCHSIA();
+    ~safe_VkMemoryGetZirconHandleInfoFUCHSIA();
+    void initialize(const VkMemoryGetZirconHandleInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkMemoryGetZirconHandleInfoFUCHSIA* src);
+    VkMemoryGetZirconHandleInfoFUCHSIA *ptr() { return reinterpret_cast<VkMemoryGetZirconHandleInfoFUCHSIA *>(this); }
+    VkMemoryGetZirconHandleInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkMemoryGetZirconHandleInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkImportSemaphoreZirconHandleInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkSemaphore semaphore;
+    VkSemaphoreImportFlags flags;
+    VkExternalSemaphoreHandleTypeFlagBits handleType;
+    zx_handle_t handle;
+    safe_VkImportSemaphoreZirconHandleInfoFUCHSIA(const VkImportSemaphoreZirconHandleInfoFUCHSIA* in_struct);
+    safe_VkImportSemaphoreZirconHandleInfoFUCHSIA(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& src);
+    safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& operator=(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA& src);
+    safe_VkImportSemaphoreZirconHandleInfoFUCHSIA();
+    ~safe_VkImportSemaphoreZirconHandleInfoFUCHSIA();
+    void initialize(const VkImportSemaphoreZirconHandleInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkImportSemaphoreZirconHandleInfoFUCHSIA* src);
+    VkImportSemaphoreZirconHandleInfoFUCHSIA *ptr() { return reinterpret_cast<VkImportSemaphoreZirconHandleInfoFUCHSIA *>(this); }
+    VkImportSemaphoreZirconHandleInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkImportSemaphoreZirconHandleInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+struct safe_VkSemaphoreGetZirconHandleInfoFUCHSIA {
+    VkStructureType sType;
+    const void* pNext;
+    VkSemaphore semaphore;
+    VkExternalSemaphoreHandleTypeFlagBits handleType;
+    safe_VkSemaphoreGetZirconHandleInfoFUCHSIA(const VkSemaphoreGetZirconHandleInfoFUCHSIA* in_struct);
+    safe_VkSemaphoreGetZirconHandleInfoFUCHSIA(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& src);
+    safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& operator=(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA& src);
+    safe_VkSemaphoreGetZirconHandleInfoFUCHSIA();
+    ~safe_VkSemaphoreGetZirconHandleInfoFUCHSIA();
+    void initialize(const VkSemaphoreGetZirconHandleInfoFUCHSIA* in_struct);
+    void initialize(const safe_VkSemaphoreGetZirconHandleInfoFUCHSIA* src);
+    VkSemaphoreGetZirconHandleInfoFUCHSIA *ptr() { return reinterpret_cast<VkSemaphoreGetZirconHandleInfoFUCHSIA *>(this); }
+    VkSemaphoreGetZirconHandleInfoFUCHSIA const *ptr() const { return reinterpret_cast<VkSemaphoreGetZirconHandleInfoFUCHSIA const *>(this); }
+};
+#endif // VK_USE_PLATFORM_FUCHSIA

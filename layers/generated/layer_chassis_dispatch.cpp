@@ -447,6 +447,17 @@ void *CreateUnwrappedExtensionStructs(ValidationObject *layer_data, const void *
                 } break;
 #endif // VK_USE_PLATFORM_ANDROID_KHR 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA: {
+                    safe_VkImportMemoryBufferCollectionFUCHSIA *safe_struct = new safe_VkImportMemoryBufferCollectionFUCHSIA;
+                    safe_struct->initialize(reinterpret_cast<const VkImportMemoryBufferCollectionFUCHSIA *>(cur_pnext));
+                    if (safe_struct->collection) {
+                        safe_struct->collection = layer_data->Unwrap(safe_struct->collection);
+                    }
+                    cur_ext_struct = reinterpret_cast<void *>(safe_struct);
+                } break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
+
             case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR: {
                     safe_VkImportMemoryFdInfoKHR *safe_struct = new safe_VkImportMemoryFdInfoKHR;
                     safe_struct->initialize(reinterpret_cast<const VkImportMemoryFdInfoKHR *>(cur_pnext));
@@ -474,6 +485,14 @@ void *CreateUnwrappedExtensionStructs(ValidationObject *layer_data, const void *
                     cur_ext_struct = reinterpret_cast<void *>(safe_struct);
                 } break;
 #endif // VK_USE_PLATFORM_WIN32_KHR 
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_TEMP_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA: {
+                    safe_VkImportMemoryZirconHandleInfoFUCHSIA *safe_struct = new safe_VkImportMemoryZirconHandleInfoFUCHSIA;
+                    safe_struct->initialize(reinterpret_cast<const VkImportMemoryZirconHandleInfoFUCHSIA *>(cur_pnext));
+                    cur_ext_struct = reinterpret_cast<void *>(safe_struct);
+                } break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO: {
                     safe_VkMemoryAllocateFlagsInfo *safe_struct = new safe_VkMemoryAllocateFlagsInfo;
@@ -533,6 +552,17 @@ void *CreateUnwrappedExtensionStructs(ValidationObject *layer_data, const void *
                 } break;
 #endif // VK_USE_PLATFORM_WIN32_KHR 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA: {
+                    safe_VkBufferCollectionBufferCreateInfoFUCHSIA *safe_struct = new safe_VkBufferCollectionBufferCreateInfoFUCHSIA;
+                    safe_struct->initialize(reinterpret_cast<const VkBufferCollectionBufferCreateInfoFUCHSIA *>(cur_pnext));
+                    if (safe_struct->collection) {
+                        safe_struct->collection = layer_data->Unwrap(safe_struct->collection);
+                    }
+                    cur_ext_struct = reinterpret_cast<void *>(safe_struct);
+                } break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
+
             case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT: {
                     safe_VkBufferDeviceAddressCreateInfoEXT *safe_struct = new safe_VkBufferDeviceAddressCreateInfoEXT;
                     safe_struct->initialize(reinterpret_cast<const VkBufferDeviceAddressCreateInfoEXT *>(cur_pnext));
@@ -550,6 +580,17 @@ void *CreateUnwrappedExtensionStructs(ValidationObject *layer_data, const void *
                     safe_struct->initialize(reinterpret_cast<const VkExternalMemoryBufferCreateInfo *>(cur_pnext));
                     cur_ext_struct = reinterpret_cast<void *>(safe_struct);
                 } break;
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA: {
+                    safe_VkBufferCollectionImageCreateInfoFUCHSIA *safe_struct = new safe_VkBufferCollectionImageCreateInfoFUCHSIA;
+                    safe_struct->initialize(reinterpret_cast<const VkBufferCollectionImageCreateInfoFUCHSIA *>(cur_pnext));
+                    if (safe_struct->collection) {
+                        safe_struct->collection = layer_data->Unwrap(safe_struct->collection);
+                    }
+                    cur_ext_struct = reinterpret_cast<void *>(safe_struct);
+                } break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV: {
                     safe_VkDedicatedAllocationImageCreateInfoNV *safe_struct = new safe_VkDedicatedAllocationImageCreateInfoNV;
@@ -576,6 +617,14 @@ void *CreateUnwrappedExtensionStructs(ValidationObject *layer_data, const void *
                     safe_struct->initialize(reinterpret_cast<const VkExternalMemoryImageCreateInfoNV *>(cur_pnext));
                     cur_ext_struct = reinterpret_cast<void *>(safe_struct);
                 } break;
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_FUCHSIA_IMAGE_FORMAT_FUCHSIA: {
+                    safe_VkFuchsiaImageFormatFUCHSIA *safe_struct = new safe_VkFuchsiaImageFormatFUCHSIA;
+                    safe_struct->initialize(reinterpret_cast<const VkFuchsiaImageFormatFUCHSIA *>(cur_pnext));
+                    cur_ext_struct = reinterpret_cast<void *>(safe_struct);
+                } break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT: {
                     safe_VkImageDrmFormatModifierExplicitCreateInfoEXT *safe_struct = new safe_VkImageDrmFormatModifierExplicitCreateInfoEXT;
@@ -1542,6 +1591,12 @@ void FreeUnwrappedExtensionStructs(void *head) {
                 break;
 #endif // VK_USE_PLATFORM_ANDROID_KHR 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA:
+                delete reinterpret_cast<safe_VkImportMemoryBufferCollectionFUCHSIA *>(header);
+                break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
+
             case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
                 delete reinterpret_cast<safe_VkImportMemoryFdInfoKHR *>(header);
                 break;
@@ -1561,6 +1616,12 @@ void FreeUnwrappedExtensionStructs(void *head) {
                 delete reinterpret_cast<safe_VkImportMemoryWin32HandleInfoNV *>(header);
                 break;
 #endif // VK_USE_PLATFORM_WIN32_KHR 
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_TEMP_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA:
+                delete reinterpret_cast<safe_VkImportMemoryZirconHandleInfoFUCHSIA *>(header);
+                break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
                 delete reinterpret_cast<safe_VkMemoryAllocateFlagsInfo *>(header);
@@ -1598,6 +1659,12 @@ void FreeUnwrappedExtensionStructs(void *head) {
                 break;
 #endif // VK_USE_PLATFORM_WIN32_KHR 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA:
+                delete reinterpret_cast<safe_VkBufferCollectionBufferCreateInfoFUCHSIA *>(header);
+                break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
+
             case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT:
                 delete reinterpret_cast<safe_VkBufferDeviceAddressCreateInfoEXT *>(header);
                 break;
@@ -1609,6 +1676,12 @@ void FreeUnwrappedExtensionStructs(void *head) {
             case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO:
                 delete reinterpret_cast<safe_VkExternalMemoryBufferCreateInfo *>(header);
                 break;
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA:
+                delete reinterpret_cast<safe_VkBufferCollectionImageCreateInfoFUCHSIA *>(header);
+                break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV:
                 delete reinterpret_cast<safe_VkDedicatedAllocationImageCreateInfoNV *>(header);
@@ -1627,6 +1700,12 @@ void FreeUnwrappedExtensionStructs(void *head) {
             case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV:
                 delete reinterpret_cast<safe_VkExternalMemoryImageCreateInfoNV *>(header);
                 break;
+
+#ifdef VK_USE_PLATFORM_FUCHSIA 
+            case VK_STRUCTURE_TYPE_FUCHSIA_IMAGE_FORMAT_FUCHSIA:
+                delete reinterpret_cast<safe_VkFuchsiaImageFormatFUCHSIA *>(header);
+                break;
+#endif // VK_USE_PLATFORM_FUCHSIA 
 
             case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT:
                 delete reinterpret_cast<safe_VkImageDrmFormatModifierExplicitCreateInfoEXT *>(header);
@@ -3693,7 +3772,19 @@ VkResult DispatchCreateBuffer(
 {
     auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
     if (!wrap_handles) return layer_data->device_dispatch_table.CreateBuffer(device, pCreateInfo, pAllocator, pBuffer);
-    VkResult result = layer_data->device_dispatch_table.CreateBuffer(device, pCreateInfo, pAllocator, pBuffer);
+    safe_VkBufferCreateInfo *local_pCreateInfo = NULL;
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        if (pCreateInfo) {
+            local_pCreateInfo = new safe_VkBufferCreateInfo(pCreateInfo);
+            local_pCreateInfo->pNext = CreateUnwrappedExtensionStructs(layer_data, local_pCreateInfo->pNext);
+        }
+    }
+    VkResult result = layer_data->device_dispatch_table.CreateBuffer(device, (const VkBufferCreateInfo*)local_pCreateInfo, pAllocator, pBuffer);
+    if (local_pCreateInfo) {
+        FreeUnwrappedExtensionStructs(const_cast<void *>(local_pCreateInfo->pNext));
+        delete local_pCreateInfo;
+    }
     if (VK_SUCCESS == result) {
         std::lock_guard<std::mutex> lock(dispatch_lock);
         *pBuffer = layer_data->WrapNew(*pBuffer);
@@ -8798,3 +8889,201 @@ void DispatchResetQueryPoolEXT(
     layer_data->device_dispatch_table.ResetQueryPoolEXT(device, queryPool, firstQuery, queryCount);
 
 }
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchCreateBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    const VkBufferCollectionCreateInfoFUCHSIA*  pImportInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkBufferCollectionFUCHSIA*                  pCollection)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.CreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection);
+    VkResult result = layer_data->device_dispatch_table.CreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection);
+    if (VK_SUCCESS == result) {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        *pCollection = layer_data->WrapNew(*pCollection);
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchSetBufferCollectionConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkImageCreateInfo*                    pImageInfo)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.SetBufferCollectionConstraintsFUCHSIA(device, collection, pImageInfo);
+    safe_VkImageCreateInfo *local_pImageInfo = NULL;
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        collection = layer_data->Unwrap(collection);
+        if (pImageInfo) {
+            local_pImageInfo = new safe_VkImageCreateInfo(pImageInfo);
+            local_pImageInfo->pNext = CreateUnwrappedExtensionStructs(layer_data, local_pImageInfo->pNext);
+        }
+    }
+    VkResult result = layer_data->device_dispatch_table.SetBufferCollectionConstraintsFUCHSIA(device, collection, (const VkImageCreateInfo*)local_pImageInfo);
+    if (local_pImageInfo) {
+        FreeUnwrappedExtensionStructs(const_cast<void *>(local_pImageInfo->pNext));
+        delete local_pImageInfo;
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchSetBufferCollectionBufferConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkBufferConstraintsInfoFUCHSIA*       pBufferConstraintsInfo)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.SetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo);
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        collection = layer_data->Unwrap(collection);
+    }
+    VkResult result = layer_data->device_dispatch_table.SetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo);
+
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+void DispatchDestroyBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkAllocationCallbacks*                pAllocator)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.DestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+    std::unique_lock<std::mutex> lock(dispatch_lock);
+    uint64_t collection_id = reinterpret_cast<uint64_t &>(collection);
+    collection = (VkBufferCollectionFUCHSIA)unique_id_mapping[collection_id];
+    unique_id_mapping.erase(collection_id);
+    lock.unlock();
+    layer_data->device_dispatch_table.DestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchGetBufferCollectionPropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    VkBufferCollectionPropertiesFUCHSIA*        pProperties)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.GetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties);
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        collection = layer_data->Unwrap(collection);
+    }
+    VkResult result = layer_data->device_dispatch_table.GetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties);
+
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchGetMemoryZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkMemoryGetZirconHandleInfoFUCHSIA*   pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.GetMemoryZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    safe_VkMemoryGetZirconHandleInfoFUCHSIA *local_pGetZirconHandleInfo = NULL;
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        if (pGetZirconHandleInfo) {
+            local_pGetZirconHandleInfo = new safe_VkMemoryGetZirconHandleInfoFUCHSIA(pGetZirconHandleInfo);
+            if (pGetZirconHandleInfo->memory) {
+                local_pGetZirconHandleInfo->memory = layer_data->Unwrap(pGetZirconHandleInfo->memory);
+            }
+        }
+    }
+    VkResult result = layer_data->device_dispatch_table.GetMemoryZirconHandleFUCHSIA(device, (const VkMemoryGetZirconHandleInfoFUCHSIA*)local_pGetZirconHandleInfo, pZirconHandle);
+    if (local_pGetZirconHandleInfo) {
+        delete local_pGetZirconHandleInfo;
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchGetMemoryZirconHandlePropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkExternalMemoryHandleTypeFlagBits          handleType,
+    zx_handle_t                                 ZirconHandle,
+    VkMemoryZirconHandlePropertiesFUCHSIA*      pMemoryZirconHandleProperties)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    VkResult result = layer_data->device_dispatch_table.GetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, ZirconHandle, pMemoryZirconHandleProperties);
+
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchImportSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.ImportSemaphoreZirconHandleFUCHSIA(device, pImportSemaphoreZirconHandleInfo);
+    safe_VkImportSemaphoreZirconHandleInfoFUCHSIA *local_pImportSemaphoreZirconHandleInfo = NULL;
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        if (pImportSemaphoreZirconHandleInfo) {
+            local_pImportSemaphoreZirconHandleInfo = new safe_VkImportSemaphoreZirconHandleInfoFUCHSIA(pImportSemaphoreZirconHandleInfo);
+            if (pImportSemaphoreZirconHandleInfo->semaphore) {
+                local_pImportSemaphoreZirconHandleInfo->semaphore = layer_data->Unwrap(pImportSemaphoreZirconHandleInfo->semaphore);
+            }
+        }
+    }
+    VkResult result = layer_data->device_dispatch_table.ImportSemaphoreZirconHandleFUCHSIA(device, (const VkImportSemaphoreZirconHandleInfoFUCHSIA*)local_pImportSemaphoreZirconHandleInfo);
+    if (local_pImportSemaphoreZirconHandleInfo) {
+        delete local_pImportSemaphoreZirconHandleInfo;
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VkResult DispatchGetSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle)
+{
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    if (!wrap_handles) return layer_data->device_dispatch_table.GetSemaphoreZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    safe_VkSemaphoreGetZirconHandleInfoFUCHSIA *local_pGetZirconHandleInfo = NULL;
+    {
+        std::lock_guard<std::mutex> lock(dispatch_lock);
+        if (pGetZirconHandleInfo) {
+            local_pGetZirconHandleInfo = new safe_VkSemaphoreGetZirconHandleInfoFUCHSIA(pGetZirconHandleInfo);
+            if (pGetZirconHandleInfo->semaphore) {
+                local_pGetZirconHandleInfo->semaphore = layer_data->Unwrap(pGetZirconHandleInfo->semaphore);
+            }
+        }
+    }
+    VkResult result = layer_data->device_dispatch_table.GetSemaphoreZirconHandleFUCHSIA(device, (const VkSemaphoreGetZirconHandleInfoFUCHSIA*)local_pGetZirconHandleInfo, pZirconHandle);
+    if (local_pGetZirconHandleInfo) {
+        delete local_pGetZirconHandleInfo;
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA

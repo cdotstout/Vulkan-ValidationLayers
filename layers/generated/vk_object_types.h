@@ -75,7 +75,8 @@ typedef enum VulkanObjectType {
     kVulkanObjectTypeValidationCacheEXT = 36,
     kVulkanObjectTypeAccelerationStructureNV = 37,
     kVulkanObjectTypePerformanceConfigurationINTEL = 38,
-    kVulkanObjectTypeMax = 39,
+    kVulkanObjectTypeBufferCollectionFUCHSIA = 39,
+    kVulkanObjectTypeMax = 40,
     // Aliases for backwards compatibilty of "promoted" types
     kVulkanObjectTypeDescriptorUpdateTemplateKHR = kVulkanObjectTypeDescriptorUpdateTemplate,
     kVulkanObjectTypeSamplerYcbcrConversionKHR = kVulkanObjectTypeSamplerYcbcrConversion,
@@ -122,6 +123,7 @@ static const char * const object_string[kVulkanObjectTypeMax] = {
     "VkValidationCacheEXT",
     "VkAccelerationStructureNV",
     "VkPerformanceConfigurationINTEL",
+    "VkBufferCollectionFUCHSIA",
 };
 
 // Helper array to get Vulkan VK_EXT_debug_report object type enum from the internal layers version
@@ -165,6 +167,7 @@ const VkDebugReportObjectTypeEXT get_debug_report_enum[] = {
     VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT,   // kVulkanObjectTypeValidationCacheEXT
     VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT,   // kVulkanObjectTypeAccelerationStructureNV
     VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT,   // kVulkanObjectTypePerformanceConfigurationINTEL
+    VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT,   // kVulkanObjectTypeBufferCollectionFUCHSIA
 };
 
 // Helper array to get Official Vulkan VkObjectType enum from the internal layers version
@@ -208,6 +211,7 @@ const VkObjectType get_object_type_enum[] = {
     VK_OBJECT_TYPE_VALIDATION_CACHE_EXT,   // kVulkanObjectTypeValidationCacheEXT
     VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV,   // kVulkanObjectTypeAccelerationStructureNV
     VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL,   // kVulkanObjectTypePerformanceConfigurationINTEL
+    VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA,   // kVulkanObjectTypeBufferCollectionFUCHSIA
 };
 
 // Helper function to convert from VkDebugReportObjectTypeEXT to VkObjectType
@@ -292,6 +296,8 @@ static inline VkObjectType convertDebugReportObjectToCoreObject(VkDebugReportObj
         return VK_OBJECT_TYPE_VALIDATION_CACHE_EXT;
     } else if (debug_report_obj == VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT) {
         return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV;
+    } else if (debug_report_obj == VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT) {
+        return VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA;
     }
     return VK_OBJECT_TYPE_UNKNOWN;
 }
@@ -378,6 +384,8 @@ static inline VkDebugReportObjectTypeEXT convertCoreObjectToDebugReportObject(Vk
         return VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
     } else if (core_report_obj == VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV) {
         return VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT;
+    } else if (core_report_obj == VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA) {
+        return VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT;
     }
     return VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT;
 }
@@ -481,6 +489,17 @@ template <> struct VkHandleInfo<VkBuffer> {
 };
 template <> struct VulkanObjectTypeInfo<kVulkanObjectTypeBuffer> {
     typedef VkBuffer Type;
+};
+template <> struct VkHandleInfo<VkBufferCollectionFUCHSIA> {
+    static const VulkanObjectType kVulkanObjectType = kVulkanObjectTypeBufferCollectionFUCHSIA;
+    static const VkDebugReportObjectTypeEXT kDebugReportObjectType = VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT;
+    static const VkObjectType kVkObjectType = VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA;
+    static const char* Typename() {
+        return "VkBufferCollectionFUCHSIA";
+    }
+};
+template <> struct VulkanObjectTypeInfo<kVulkanObjectTypeBufferCollectionFUCHSIA> {
+    typedef VkBufferCollectionFUCHSIA Type;
 };
 template <> struct VkHandleInfo<VkBufferView> {
     static const VulkanObjectType kVulkanObjectType = kVulkanObjectTypeBufferView;

@@ -9111,6 +9111,222 @@ VKAPI_ATTR void VKAPI_CALL ResetQueryPoolEXT(
 
 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VKAPI_ATTR VkResult VKAPI_CALL CreateBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    const VkBufferCollectionCreateInfoFUCHSIA*  pImportInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkBufferCollectionFUCHSIA*                  pCollection) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateCreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordCreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection);
+    }
+    VkResult result = DispatchCreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordCreateBufferCollectionFUCHSIA(device, pImportInfo, pAllocator, pCollection, result);
+    }
+    return result;
+}
+
+VKAPI_ATTR VkResult VKAPI_CALL SetBufferCollectionConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkImageCreateInfo*                    pImageInfo) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateSetBufferCollectionConstraintsFUCHSIA(device, collection, pImageInfo);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordSetBufferCollectionConstraintsFUCHSIA(device, collection, pImageInfo);
+    }
+    VkResult result = DispatchSetBufferCollectionConstraintsFUCHSIA(device, collection, pImageInfo);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordSetBufferCollectionConstraintsFUCHSIA(device, collection, pImageInfo, result);
+    }
+    return result;
+}
+
+VKAPI_ATTR VkResult VKAPI_CALL SetBufferCollectionBufferConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkBufferConstraintsInfoFUCHSIA*       pBufferConstraintsInfo) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo);
+    }
+    VkResult result = DispatchSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, pBufferConstraintsInfo, result);
+    }
+    return result;
+}
+
+VKAPI_ATTR void VKAPI_CALL DestroyBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkAllocationCallbacks*                pAllocator) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateDestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+        if (skip) return;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordDestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+    }
+    DispatchDestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordDestroyBufferCollectionFUCHSIA(device, collection, pAllocator);
+    }
+}
+
+VKAPI_ATTR VkResult VKAPI_CALL GetBufferCollectionPropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    VkBufferCollectionPropertiesFUCHSIA*        pProperties) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateGetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordGetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties);
+    }
+    VkResult result = DispatchGetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordGetBufferCollectionPropertiesFUCHSIA(device, collection, pProperties, result);
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VKAPI_ATTR VkResult VKAPI_CALL GetMemoryZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkMemoryGetZirconHandleInfoFUCHSIA*   pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateGetMemoryZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordGetMemoryZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    }
+    VkResult result = DispatchGetMemoryZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordGetMemoryZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle, result);
+    }
+    return result;
+}
+
+VKAPI_ATTR VkResult VKAPI_CALL GetMemoryZirconHandlePropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkExternalMemoryHandleTypeFlagBits          handleType,
+    zx_handle_t                                 ZirconHandle,
+    VkMemoryZirconHandlePropertiesFUCHSIA*      pMemoryZirconHandleProperties) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, ZirconHandle, pMemoryZirconHandleProperties);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, ZirconHandle, pMemoryZirconHandleProperties);
+    }
+    VkResult result = DispatchGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, ZirconHandle, pMemoryZirconHandleProperties);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, ZirconHandle, pMemoryZirconHandleProperties, result);
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+VKAPI_ATTR VkResult VKAPI_CALL ImportSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateImportSemaphoreZirconHandleFUCHSIA(device, pImportSemaphoreZirconHandleInfo);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordImportSemaphoreZirconHandleFUCHSIA(device, pImportSemaphoreZirconHandleInfo);
+    }
+    VkResult result = DispatchImportSemaphoreZirconHandleFUCHSIA(device, pImportSemaphoreZirconHandleInfo);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordImportSemaphoreZirconHandleFUCHSIA(device, pImportSemaphoreZirconHandleInfo, result);
+    }
+    return result;
+}
+
+VKAPI_ATTR VkResult VKAPI_CALL GetSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle) {
+    auto layer_data = GetLayerDataPtr(get_dispatch_key(device), layer_data_map);
+    bool skip = false;
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        skip |= intercept->PreCallValidateGetSemaphoreZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+        if (skip) return VK_ERROR_VALIDATION_FAILED_EXT;
+    }
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PreCallRecordGetSemaphoreZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    }
+    VkResult result = DispatchGetSemaphoreZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle);
+    for (auto intercept : layer_data->object_dispatch) {
+        auto lock = intercept->write_lock();
+        intercept->PostCallRecordGetSemaphoreZirconHandleFUCHSIA(device, pGetZirconHandleInfo, pZirconHandle, result);
+    }
+    return result;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
 // Map of intercepted ApiName to its associated function data
 const std::unordered_map<std::string, function_data> name_to_funcptr_map = {
     {"vkCreateInstance", {true, (void*)CreateInstance}},
@@ -9543,6 +9759,33 @@ const std::unordered_map<std::string, function_data> name_to_funcptr_map = {
 #endif
     {"vkCreateHeadlessSurfaceEXT", {true, (void*)CreateHeadlessSurfaceEXT}},
     {"vkResetQueryPoolEXT", {false, (void*)ResetQueryPoolEXT}},
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkCreateBufferCollectionFUCHSIA", {false, (void*)CreateBufferCollectionFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkSetBufferCollectionConstraintsFUCHSIA", {false, (void*)SetBufferCollectionConstraintsFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkSetBufferCollectionBufferConstraintsFUCHSIA", {false, (void*)SetBufferCollectionBufferConstraintsFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkDestroyBufferCollectionFUCHSIA", {false, (void*)DestroyBufferCollectionFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkGetBufferCollectionPropertiesFUCHSIA", {false, (void*)GetBufferCollectionPropertiesFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkGetMemoryZirconHandleFUCHSIA", {false, (void*)GetMemoryZirconHandleFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkGetMemoryZirconHandlePropertiesFUCHSIA", {false, (void*)GetMemoryZirconHandlePropertiesFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkImportSemaphoreZirconHandleFUCHSIA", {false, (void*)ImportSemaphoreZirconHandleFUCHSIA}},
+#endif
+#ifdef VK_USE_PLATFORM_FUCHSIA
+    {"vkGetSemaphoreZirconHandleFUCHSIA", {false, (void*)GetSemaphoreZirconHandleFUCHSIA}},
+#endif
 };
 
 

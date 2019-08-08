@@ -69,6 +69,7 @@ bool ObjectLifetimes::ReportUndestroyedObjects(VkDevice device, const std::strin
     skip |= DeviceReportUndestroyedObjects(device, kVulkanObjectTypeValidationCacheEXT, error_code);
     skip |= DeviceReportUndestroyedObjects(device, kVulkanObjectTypeAccelerationStructureNV, error_code);
     skip |= DeviceReportUndestroyedObjects(device, kVulkanObjectTypePerformanceConfigurationINTEL, error_code);
+    skip |= DeviceReportUndestroyedObjects(device, kVulkanObjectTypeBufferCollectionFUCHSIA, error_code);
     return skip;
 }
 
@@ -107,6 +108,7 @@ void ObjectLifetimes::DestroyUndestroyedObjects(VkDevice device) {
     DeviceDestroyUndestroyedObjects(device, kVulkanObjectTypeValidationCacheEXT);
     DeviceDestroyUndestroyedObjects(device, kVulkanObjectTypeAccelerationStructureNV);
     DeviceDestroyUndestroyedObjects(device, kVulkanObjectTypePerformanceConfigurationINTEL);
+    DeviceDestroyUndestroyedObjects(device, kVulkanObjectTypeBufferCollectionFUCHSIA);
 }
 
 
@@ -5076,5 +5078,156 @@ bool ObjectLifetimes::PreCallValidateResetQueryPoolEXT(
 
     return skip;
 }
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateCreateBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    const VkBufferCollectionCreateInfoFUCHSIA*  pImportInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkBufferCollectionFUCHSIA*                  pCollection) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+
+void ObjectLifetimes::PostCallRecordCreateBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    const VkBufferCollectionCreateInfoFUCHSIA*  pImportInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkBufferCollectionFUCHSIA*                  pCollection,
+    VkResult                                    result) {
+    if (result != VK_SUCCESS) return;
+    CreateObject(device, *pCollection, kVulkanObjectTypeBufferCollectionFUCHSIA, pAllocator);
+
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateSetBufferCollectionConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkImageCreateInfo*                    pImageInfo) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    skip |= ValidateObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA, false, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateSetBufferCollectionBufferConstraintsFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkBufferConstraintsInfoFUCHSIA*       pBufferConstraintsInfo) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    skip |= ValidateObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA, false, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateDestroyBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkAllocationCallbacks*                pAllocator) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    skip |= ValidateObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA, false, kVUIDUndefined, kVUIDUndefined);
+    skip |= ValidateDestroyObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA, pAllocator, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+
+void ObjectLifetimes::PreCallRecordDestroyBufferCollectionFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    const VkAllocationCallbacks*                pAllocator) {
+    RecordDestroyObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA);
+
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateGetBufferCollectionPropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkBufferCollectionFUCHSIA                   collection,
+    VkBufferCollectionPropertiesFUCHSIA*        pProperties) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    skip |= ValidateObject(device, collection, kVulkanObjectTypeBufferCollectionFUCHSIA, false, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateGetMemoryZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkMemoryGetZirconHandleInfoFUCHSIA*   pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    if (pGetZirconHandleInfo) {
+        skip |= ValidateObject(device, pGetZirconHandleInfo->memory, kVulkanObjectTypeDeviceMemory, false, kVUIDUndefined, kVUIDUndefined);
+    }
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateGetMemoryZirconHandlePropertiesFUCHSIA(
+    VkDevice                                    device,
+    VkExternalMemoryHandleTypeFlagBits          handleType,
+    zx_handle_t                                 ZirconHandle,
+    VkMemoryZirconHandlePropertiesFUCHSIA*      pMemoryZirconHandleProperties) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateImportSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    if (pImportSemaphoreZirconHandleInfo) {
+        skip |= ValidateObject(device, pImportSemaphoreZirconHandleInfo->semaphore, kVulkanObjectTypeSemaphore, false, kVUIDUndefined, kVUIDUndefined);
+    }
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+bool ObjectLifetimes::PreCallValidateGetSemaphoreZirconHandleFUCHSIA(
+    VkDevice                                    device,
+    const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo,
+    zx_handle_t*                                pZirconHandle) {
+    bool skip = false;
+    skip |= ValidateObject(device, device, kVulkanObjectTypeDevice, false, kVUIDUndefined, kVUIDUndefined);
+    if (pGetZirconHandleInfo) {
+        skip |= ValidateObject(device, pGetZirconHandleInfo->semaphore, kVulkanObjectTypeSemaphore, false, kVUIDUndefined, kVUIDUndefined);
+    }
+
+    return skip;
+}
+#endif // VK_USE_PLATFORM_FUCHSIA
 
 
