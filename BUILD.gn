@@ -205,7 +205,6 @@ if (!is_android) {
       "VkLayer_khronos_validation.json",
     ]
     sources = [
-      "$vulkan_headers_dir/include/vulkan/vk_layer.h",
       "$vulkan_headers_dir/include/vulkan/vulkan_core.h",
     ]
     outputs = []
